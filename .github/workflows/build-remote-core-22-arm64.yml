@@ -1,0 +1,25 @@
+name: build the snap remotely
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: snapcore/action-build@v1
+        id: snapcraft
+        with:
+          path: .
+          snapcraft-channel: 7.x/stable
+          snapcraft-args: remote-build --build-on arm64
+      - uses: actions/upload-artifact@v3
+        with:
+          name: snap
+          path: ${{ steps.snapcraft.outputs.snap }}
+
+
+
