@@ -15,7 +15,7 @@ jobs:
         with:
           path: .
           snapcraft-channel: 7.x/stable
-          snapcraft-args: remote-build --build-on arm64 --launchpad-accept-public-upload --launchpad-user kissiel@gmail.com
+          snapcraft-args: remote-build --build-on arm64 --launchpad-accept-public-upload
         env:
           UBUNTU_STORE_AUTH: ${{ secrets.SNAPCRAFT_LOGIN }}
       - uses: actions/upload-artifact@v3
